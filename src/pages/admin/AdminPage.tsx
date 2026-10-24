@@ -114,37 +114,52 @@ export function AdminPage() {
 
   return (
     <div className="min-h-screen bg-off-white">
-      <header className="border-b border-navy/10 bg-white">
-        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-4 py-4">
-          <div>
+      <header className="overflow-visible border-b border-navy/10 bg-white">
+        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-4 py-5 sm:px-6">
+          <div className="min-w-0">
             <h1 className="font-display text-2xl text-navy">ACB CMS</h1>
             <p className="text-xs text-charcoal/60">
               {sessionEmail} · {fromCms ? "Live from Supabase" : "Using local defaults"}
             </p>
           </div>
-          <div className="flex flex-wrap gap-2">
-            <Link to="/" className="rounded-full border border-navy/15 px-4 py-2 text-sm font-semibold text-navy hover:border-gold">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+            <Link
+              to="/"
+              className="inline-flex min-h-[2.75rem] items-center rounded-full border border-navy/15 px-4 py-2.5 text-sm font-semibold leading-none text-navy hover:border-gold"
+            >
               View site
             </Link>
-            <button type="button" onClick={runSeed} className="rounded-full border border-gold/50 px-4 py-2 text-sm font-semibold text-navy">
+            <button
+              type="button"
+              onClick={runSeed}
+              className="inline-flex min-h-[2.75rem] items-center rounded-full border border-gold/50 px-4 py-2.5 text-sm font-semibold leading-none text-navy"
+            >
               Seed defaults
             </button>
-            <button type="button" onClick={signOut} className="rounded-full bg-navy px-4 py-2 text-sm font-semibold text-white">
+            <button
+              type="button"
+              onClick={signOut}
+              className="inline-flex min-h-[2.75rem] items-center rounded-full bg-navy px-5 py-2.5 text-sm font-semibold leading-none text-white hover:bg-navy-dark"
+            >
               Sign out
             </button>
           </div>
         </div>
-        <nav className="mx-auto flex max-w-6xl gap-1 overflow-x-auto px-4 pb-3">
-          {TABS.map((t) => (
-            <button
-              key={t.id}
-              type="button"
-              onClick={() => setTab(t.id)}
-              className={`shrink-0 rounded-full px-4 py-2 text-sm font-semibold ${tab === t.id ? "bg-navy text-white" : "bg-white text-navy ring-1 ring-navy/10"}`}
-            >
-              {t.label}
-            </button>
-          ))}
+        <nav className="mx-auto max-w-6xl px-4 pb-5 pt-1 sm:px-6" aria-label="CMS sections">
+          <div className="flex flex-wrap gap-2">
+            {TABS.map((t) => (
+              <button
+                key={t.id}
+                type="button"
+                onClick={() => setTab(t.id)}
+                className={`inline-flex min-h-[2.75rem] items-center rounded-full px-4 py-2.5 text-sm font-semibold leading-none transition-colors ${
+                  tab === t.id ? "bg-navy text-white shadow-sm" : "bg-white text-navy ring-1 ring-navy/15 hover:ring-gold/50"
+                }`}
+              >
+                {t.label}
+              </button>
+            ))}
+          </div>
         </nav>
       </header>
 
@@ -646,7 +661,7 @@ function SectionCard({
           type="button"
           disabled={saving}
           onClick={onSave}
-          className="rounded-full bg-gold px-5 py-2 text-sm font-bold text-navy disabled:opacity-60"
+          className="inline-flex min-h-[2.75rem] shrink-0 items-center rounded-full bg-gold px-6 py-2.5 text-sm font-bold leading-none text-navy disabled:opacity-60"
         >
           {saving ? "Saving…" : "Save section"}
         </button>
