@@ -39,6 +39,14 @@ npm run build
 
 Deploy `dist/` to any static host. Set the same `VITE_*` env vars at build time so the live site reads CMS content.
 
+### Vercel
+
+- Framework preset: **Vite** (or leave **Other** — `vercel.json` sets `buildCommand` and `outputDirectory`).
+- **Settings → General → Build & Development Settings**: if overrides exist, set **Output Directory** to `dist` or remove overrides so `vercel.json` applies.
+- Add environment variables: `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`, `VITE_SITE_URL` (then **Redeploy**).
+- After deploy, open **`/admin/`** (trailing slash) or **`/admin`** (redirects). Build creates `dist/admin/index.html` for direct `/admin/` access.
+- If `/admin` still 404s: confirm the latest commit includes `vercel.json`, `scripts/postbuild-spa.mjs`, and check the deployment **Build Logs** for `Created dist/admin/index.html`.
+
 ### Share preview (Open Graph)
 
 - Banner image: `public/og-image.jpg` (used when links are shared on Facebook, Messenger, LinkedIn, X, etc.).

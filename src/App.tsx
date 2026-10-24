@@ -9,7 +9,7 @@ export default function App() {
     <BrowserRouter>
       <ContentProvider>
         <Routes>
-          <Route path="/admin" element={<AdminPage />} />
+          <Route path="/admin/*" element={<AdminPage />} />
           <Route
             path="/"
             element={
