@@ -39,6 +39,13 @@ npm run build
 
 Deploy `dist/` to any static host. Set the same `VITE_*` env vars at build time so the live site reads CMS content.
 
+### Share preview (Open Graph)
+
+- Banner image: `public/og-image.jpg` (used when links are shared on Facebook, Messenger, LinkedIn, X, etc.).
+- Before production build, set **`VITE_SITE_URL`** in `.env` to your live URL (no trailing slash), e.g. `https://yourname.github.io/acb`.
+- Run `npm run build` so `index.html` gets the correct absolute `og:image` URL.
+- Test: [Facebook Sharing Debugger](https://developers.facebook.com/tools/debug/) or [LinkedIn Post Inspector](https://www.linkedin.com/post-inspector/).
+
 ## Content structure
 
 All editable content is defined in `src/types/cms.ts` and defaults in `src/data/cmsDefaults.ts`. Legacy files under `src/data/*.ts` feed the default seed only.
